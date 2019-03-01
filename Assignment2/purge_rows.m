@@ -1,4 +1,4 @@
-function [A,b] = purge_rows(A,b,Nthr)
+function [A,b,I] = purge_rows(A,b,Nthr)
 %PURGE_ROWS  Remove zero or very sparse rows of A and corresp. entries in b
 %
 %   [A,b] = purge_rows(A,b)
@@ -19,13 +19,13 @@ function [A,b] = purge_rows(A,b,Nthr)
 %
 % See also: demo_custom_sirt.
 
-% Code written by: Per Christian Hansen, Jakob Sauer Jorgensen, and 
+% Code written by: Per Christian Hansen, Jakob Sauer Jorgensen, and
 % Maria Saxild-Hansen, 2010-2017.
 
 % This file is part of the AIR Tools II package and is distributed under
 % the 3-Clause BSD License. A separate license file should be provided as
-% part of the package. 
-% 
+% part of the package.
+%
 % Copyright 2017 Per Christian Hansen, Technical University of Denmark and
 % Jakob Sauer Jorgensen, University of Manchester.
 

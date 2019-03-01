@@ -26,11 +26,20 @@ title('Data (sinograph)');
 [K, d] = purge_rows(K, d);
 
 % Rescale K, and d so that the l2 norm of each row is 1
-s = sqrt( sum(K.*K, 2) );
+s = sqrt(sum(K.*K, 2));
 K = spdiags(1./s,0)*K;
 d = spdiags(1./s,0)*d;
 
 % A) Reconstruct m using EM. Report D_KL(d || K*m) and ||m - m_true||
+
+% initialize variables
+m_recon = rand(size(m_true));
+sp = sum(K,1);
+iterations = 100;
+for i=1:iterations
+    m_recon = m_recon.*(sp.^-1)*K'*(d/(K*m_recon));
+end
+
 
 % B) Consider the noisy data case, i.e d is a realization of a Poisson
 % distributed random vector.
