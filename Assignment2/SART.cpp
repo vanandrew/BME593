@@ -65,8 +65,12 @@ class MexFunction : public matlab::mex::Function {
                 t = 1;
                 q = 0;
 
-                // loop over each row
-                for (int i=0; i<7328; i++) {
+                // loop over each row (I do to 7329 so the last projection can be accounted for)
+                for (int i=0; i<7329; i++) {
+                    // quit if we passed the last iterate
+                    if (i == 7328)
+                        break;
+    
                     // Get current row;
                     double** row = Krow[i];
 
@@ -74,14 +78,14 @@ class MexFunction : public matlab::mex::Function {
                     InnerProduct(ip,row,m_recon);
 
                     /*
-                        This is different from ART b/c we are only updating m_reco
+                        This is different from ART b/c we are only updating m_recon
                         after each projection angle. This means we need to keep track
                         of what angle we are currently on, and add a conditional for
                         when to update m_recon
                     */
 
                     // check the current row projection label (90 b/c every new angle = 90)
-                    if ( pi[i] > t*90 || i == 7327) { // condition for new angle or we hit last iterate
+                    if ( pi[i] > t*90) { // condition for new angle
                         // update m since we finish with current projection angle
                         for (int l=1; l<4096; l++) {
                                 m_recon[l] += m_temp[l]/q;
