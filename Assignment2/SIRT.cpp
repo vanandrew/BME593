@@ -2,7 +2,7 @@
     Defines a callable SIRT Method Function for MATLAB
 
     To run, simply compile the binary by running 'mex SIRT.cpp', then
-    call the function via 'ART(args...)'
+    call the function via 'SIRT(args...)'
 */
 #include <iostream>
 #include "mex.hpp"

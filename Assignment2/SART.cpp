@@ -2,7 +2,7 @@
     Defines a callable SART Method Function for MATLAB
 
     To run, simply compile the binary by running 'mex SART.cpp', then
-    call the function via 'ART(args...)'
+    call the function via 'SART(args...)'
 */
 #include <iostream>
 #include "mex.hpp"
