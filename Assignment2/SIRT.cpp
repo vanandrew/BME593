@@ -78,7 +78,7 @@ class MexFunction : public matlab::mex::Function {
 
                 // Save m_recon into matlab array
                 for (int k=0; k<4096; k++) {
-                    m_recon[k] += 2*m_temp[k]/7328;
+                    m_recon[k] += m_temp[k]/7328;
                     m_temp[k] = 0; // reset m_temp for next angle
                     m[k][j] = m_recon[k];
                 }
