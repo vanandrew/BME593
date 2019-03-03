@@ -4,7 +4,6 @@
     To run, simply compile the binary by running 'mex SIRT.cpp', then
     call the function via 'SIRT(args...)'
 */
-#include <iostream>
 #include "mex.hpp"
 #include "mexAdapter.hpp"
 
@@ -37,7 +36,6 @@ class MexFunction : public matlab::mex::Function {
             double ip; // for storing inner product calculations
 
             // Store the rows of the K matrix in more efficient form
-            std::cout << "Copying data over to C data types..." << std::endl;
             GetRow(Krow,&Kt);
 
             // Convert to C data types
@@ -54,7 +52,6 @@ class MexFunction : public matlab::mex::Function {
 
             // Do SIRT method
             for (int j=0; j<1000; j++) {
-                std::cout << "Iteration #: " << j << std::endl;
                 // loop over each row
                 for (int i=0; i<7328; i++) {
                     // Get current row;

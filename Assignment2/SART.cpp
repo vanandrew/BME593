@@ -4,7 +4,6 @@
     To run, simply compile the binary by running 'mex SART.cpp', then
     call the function via 'SART(args...)'
 */
-#include <iostream>
 #include "mex.hpp"
 #include "mexAdapter.hpp"
 
@@ -41,7 +40,6 @@ class MexFunction : public matlab::mex::Function {
             int q; // keeps track of number of projections to average over
 
             // Store the rows of the K matrix in more efficient form
-            std::cout << "Copying data over to C data types..." << std::endl;
             GetRow(Krow,&Kt);
 
             // Convert to C data types
@@ -59,8 +57,6 @@ class MexFunction : public matlab::mex::Function {
 
             // Do SART method
             for (int j=0; j<1000; j++) {
-                std::cout << "Iteration #: " << j << std::endl;
-
                 // reset the angle index
                 t = 1;
                 q = 0;
